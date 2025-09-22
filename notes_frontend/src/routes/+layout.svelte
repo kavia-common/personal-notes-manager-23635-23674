@@ -1,17 +1,10 @@
 <script lang="ts">
-    import '../app.css';
-    let { children } = $props();
+  import '../app.css';
+  import NavBar from '$lib/components/NavBar.svelte';
+  let { children } = $props();
 </script>
 
-<main>
-    {@render children()}
+<NavBar />
+<main class="container">
+  {@render children()}
 </main>
-
-<style>
-    main {
-        display: flex;
-        min-height: 100vh;
-        align-items: center;
-        justify-content: center;
-    }
-</style>

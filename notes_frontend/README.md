@@ -1,38 +1,34 @@
-# sv
+# Ocean Notes Frontend (SvelteKit)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern notes manager UI using the Ocean Professional theme (blue/amber accents, subtle gradients, rounded corners, soft shadows).
 
-## Creating a project
+Features:
+- Create, view, edit, delete notes
+- Search notes by title or content
+- Modal editor with accent color
+- Mock API fallback via localStorage
+- Ready to connect to a backend via REST
 
-If you're seeing this, you've probably already done this step. Congrats!
+Getting started:
+1) Install dependencies
+   npm install
+2) Run dev server
+   npm run dev
 
-```bash
-# create a new project in the current directory
-npx sv create
+Environment:
+- VITE_API_BASE: Optional. Base URL for your backend (e.g. https://api.example.com).
+  If not set, the app uses a mock in-memory/localStorage API.
 
-# create a new project in my-app
-npx sv create my-app
-```
+Integration:
+- API functions in src/lib/api.ts:
+  - listNotes(q?), getNote(id), createNote(input), updateNote(id, input), deleteNote(id)
+- To point to backend, set VITE_API_BASE and ensure the following REST endpoints exist:
+  GET    {VITE_API_BASE}/api/notes?q=...
+  GET    {VITE_API_BASE}/api/notes/:id
+  POST   {VITE_API_BASE}/api/notes
+  PUT    {VITE_API_BASE}/api/notes/:id
+  DELETE {VITE_API_BASE}/api/notes/:id
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Styling:
+- Global theme styles in src/app.css
+- Components in src/lib/components
